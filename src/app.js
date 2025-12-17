@@ -44,6 +44,9 @@ connectDB().then(() => {
     console.log(`Server ${PORT} portda ishlamoqda`);
     console.log(`Admin panel: http://localhost:${PORT}`);
   });
+  
+  // Telegram botni ishga tushirish
+  require('./bot/index');
 });
 
 module.exports = app;

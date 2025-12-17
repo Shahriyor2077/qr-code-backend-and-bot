@@ -1,14 +1,7 @@
-require('dotenv').config();
 const { Telegraf } = require('telegraf');
-const mongoose = require('mongoose');
 const User = require('../models/User');
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
-
-// MongoDB ulanish
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('Bot: MongoDB ga ulandi'))
-  .catch(err => console.error('MongoDB xatosi:', err));
 
 // /start komandasi
 bot.start(async (ctx) => {
