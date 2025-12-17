@@ -1,0 +1,21 @@
+{
+  "name": "qr-check-system",
+  "version": "1.0.0",
+  "description": "QR kod va chek tizimi - Admin panel + Telegram bot",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "bot": "node src/bot/index.js",
+    "dev": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^8.0.0",
+    "telegraf": "^4.15.0",
+    "qrcode": "^1.5.3",
+    "dotenv": "^16.3.1",
+    "bcryptjs": "^2.4.3",
+    "express-session": "^1.17.3",
+    "cors": "^2.8.5"
+  }
+}
