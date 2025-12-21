@@ -1,23 +1,19 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-const moderatorSchema = new mongoose.Schema({
+const schema = new mongoose.Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  name: { type: String, default: 'Moderator' },
-  createdAt: { type: Date, default: Date.now }
+  name: { type: String, default: 'Moderator' }
 });
 
-moderatorSchema.pre('save', async function(next) {
-  if (!this.isModified('password')) return next();
-  this.password = await bcrypt.hash(this.password, 10);
+schema.pre('save', async function(next) {
+  if (this.isModified('password')) this.password = await bcrypt.hash(this.password, 10);
   next();
 });
 
-moderatorSchema.methods.comparePassword = async function(password) {
+schema.methods.comparePassword = function(password) {
   return bcrypt.compare(password, this.password);
 };
 
-module.exports = mongoose.model('Moderator', moderatorSchema);
-
-
+module.exports = mongoose.model('Moderator', schema);
